@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Online Quiz</title>
+  </head>
+  <body>
+   <form id="quiz-form">
+      <p>1. What is the capital of France?</p>
+      <label><input type="radio" name="q1" value="a"> (A) Paris</label><br>
+      <label><input type="radio" name="q1" value="b"> (B) Vichi</label><br>
+      <label><input type="radio" name="q1" value="c"> (C) Lyon</label><br><br>
+
+      <p>2. What is the capital of Denmark?</p>
+      <label><input type="radio" name="q2" value="a"> (A) Copenhagen</label><br>
+      <label><input type="radio" name="q2" value="b"> (B) Aalborg</label><br>
+      <label><input type="radio" name="q2" value="c"> (C) Roskilde</label><br><br>
+
+      <p>3. What is the capital of Germany?</p>
+      <label><input type="radio" name="q3" value="a"> (A) Hamburg</label><br>
+      <label><input type="radio" name="q3" value="b"> (B) Frankfurt</label><br>
+      <label><input type="radio" name="q3" value="c"> (C) Berlin</label><br><br>
+
+      <p>4. What is the capital of India?</p>
+      <label><input type="radio" name="q4" value="a"> (A) New Delhi</label><br>
+      <label><input type="radio" name="q4" value="b"> (B) Mumbai</label><br>
+      <label><input type="radio" name="q4" value="c"> (C) Surat</label><br><br>
+
+      <p>5. What is the capital of Japan?</p>
+      <label><input type="radio" name="q5" value="a"> (A) Osaka</label><br>
+      <label><input type="radio" name="q5" value="b"> (B) Tokyo</label><br>
+      <label><input type="radio" name="q5" value="c"> (C) Sendai</label><br><br>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <p id="score"></p>
+
+  	<script>
+      const form = document.querySelector('#quiz-form');
+      const scoreDisplay = document.querySelector('#score');
+
+      // Correct answers
+      const correctAnswers = ['a', 'a', 'c', 'a', 'b'];
+
+      // Handle form submission
+      form.addEventListener('submit', i => {
+        i.preventDefault();
+
+        // Get answers
+        const userAnswers = [
+          form.q1.value,
+          form.q2.value,
+          form.q3.value,
+          form.q4.value,
+          form.q5.value
+        ];
+
+        // Calculate score
+        let score = 0;
+        userAnswers.forEach((answer, index) => {
+          if (answer === correctAnswers[index]) {
+            score += 20;
+          }
+        });
+
+        // Display score
+        scoreDisplay.textContent = `You scored ${score}%`;
+      });
+
+    </script>
+  </body>
+</html>
